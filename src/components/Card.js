@@ -12,7 +12,8 @@ const propTypes = {
 class Card extends React.PureComponent {
     render() {
         const { navigation, item } = this.props;
-        return <MovieCard onPress={() => navigation.navigate('Detail')}>
+        return <MovieCard
+            onPress={() => navigation.navigate('Detail', {movieDetail: item})}>
 
             <CardImages
                 resizeMode="cover"

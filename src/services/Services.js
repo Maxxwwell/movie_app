@@ -33,3 +33,10 @@ export const getAnimation = async () => {
     console.log(resp.data.results);
     return resp.data.results;
 };
+
+//Annime
+export const getMovieDetails = async (id) => {
+    const resp = await axios.get(`${apiUrl}/movie/${id}?${apiKey}`);
+    console.log(resp.data.results);
+    return resp.data;
+};

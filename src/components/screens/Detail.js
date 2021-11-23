@@ -1,9 +1,10 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import {Text} from 'react-native';
+import { Text } from 'react-native';
 
-const Detail = () => {
-  return <Text>Movie details</Text>;
+const Detail = ({ route, navigation }) => {
+  const movieDetail = route.params.movieDetail;
+  return <Text>{movieDetail.title}</Text>;
 };
 
 export default Detail;
