@@ -1,23 +1,11 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { View, Text, FlatList } from 'react-native';
-import styled from 'styled-components';
+import { FlatList } from 'react-native';
 import Card from './Card';
 import PropTypes from 'prop-types';
+import { ListContainer, TitleContainer, Title } from './styles/List-styles';
 
 
-const ListContainer = styled(View)`
-
-`;
-
-const TitleContainer = styled(View)`
-
-`;
-
-const Title = styled(Text)`
-  font-size: 20px;
-  font-weight: bold;
-`;
 const propTypes = {
   title: PropTypes.string,
   content: PropTypes.array,
@@ -25,7 +13,7 @@ const propTypes = {
 
 class List extends React.PureComponent {
   render() {
-    const { title, content } = this.props;
+    const { navigation, title, content } = this.props;
     return (
       <ListContainer>
 
@@ -36,7 +24,7 @@ class List extends React.PureComponent {
         <FlatList
           data={content}
           horizontal={true}
-          renderItem={({ item }) => <Card item={item} />}
+          renderItem={({ item }) => <Card navigation={navigation} item={item} />}
         />
 
       </ListContainer>

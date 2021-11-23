@@ -1,34 +1,17 @@
 /* eslint-disable prettier/prettier */
 import React, { useState, useEffect } from 'react';
-import { ActivityIndicator, View, Dimensions, ScrollView, Text } from 'react-native';
+import { Dimensions, ScrollView, } from 'react-native';
 import { getUpcomingMovies, getPopularMovies, getPopularTvSeries, getCrimeMovies, getAnimation } from '../../services/Services';
 import { SliderBox } from 'react-native-image-slider-box';
-import styled from 'styled-components';
 import List from '../List';
 import Error from '../Error';
+import { Loading, SlideContainer, Carousel } from '../styles/Home-styles';
 
-const SlideContainer = styled(View)`
-    flex: 1;
-    justify-content: center;
-    alignItems: center;
-`;
 
-const Carousel = styled(View)`
-    flex: 1;
-    justify-content: center;
-    alignItems: center;
-    padding-left: 5px;
-    padding-top: 20px;
-`;
-
-const Loading = styled(ActivityIndicator)`
-    flex: 1;
-    justify-content: center;
-`;
 
 
 const screenSize = Dimensions.get('screen');
-export const Home = () => {
+export const Home = ({ navigation }) => {
     const [movieImages, setMovieImages] = useState('');
     const [popularMovies, setPopularMovies] = useState('');
     const [popularTVseries, setPopularTVseries] = useState('');
@@ -100,28 +83,22 @@ export const Home = () => {
                         </SlideContainer>
 
                         <Carousel>
-                            <List title="Popular Movies" content={popularMovies} />
+                            <List navigation={navigation} title="Popular Movies" content={popularMovies} />
                         </Carousel>
 
                         <Carousel>
-                            <List title="Popular TV Shows" content={popularTVseries} />
+                            <List navigation={navigation} title="Popular TV Shows" content={popularTVseries} />
                         </Carousel>
 
                         <Carousel>
-                            <List title="Crime" content={crimeMovies} />
+                            <List navigation={navigation} title="Crime" content={crimeMovies} />
                         </Carousel>
 
                         <Carousel>
-                            <List title="Animation" content={anime} />
+                            <List navigation={navigation} title="Animation" content={anime} />
                         </Carousel>
                     </ScrollView>
             }
-
-
-
-
-
-
         </>
     );
 };
