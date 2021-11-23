@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React, { useState, useEffect } from 'react';
-import { Dimensions, ScrollView, } from 'react-native';
-import { getUpcomingMovies, getPopularMovies, getPopularTvSeries, getCrimeMovies, getAnimation } from '../../services/Services';
+import { Dimensions, ScrollView } from 'react-native';
+import { getUpcomingMovies, getPopularMovies, getHistoryMovies, getCrimeMovies, getAnimation } from '../../services/Services';
 import { SliderBox } from 'react-native-image-slider-box';
 import List from '../List';
 import Error from '../Error';
@@ -14,7 +14,7 @@ const screenSize = Dimensions.get('screen');
 export const Home = ({ navigation }) => {
     const [movieImages, setMovieImages] = useState('');
     const [popularMovies, setPopularMovies] = useState('');
-    const [popularTVseries, setPopularTVseries] = useState('');
+    const [historyMovies, setHistoryMoviesData] = useState('');
     const [crimeMovies, setCrimeMovies] = useState('');
     const [anime, setAnime] = useState('');
 
@@ -27,7 +27,7 @@ export const Home = ({ navigation }) => {
         return Promise.all([
             getUpcomingMovies(),
             getPopularMovies(),
-            getPopularTvSeries(),
+            getHistoryMovies(),
             getCrimeMovies(),
             getAnimation(),
         ]);
@@ -39,7 +39,7 @@ export const Home = ({ navigation }) => {
             ([
                 UpcomingMoviesData,
                 popularMoviesData,
-                popularTvSeriesData,
+                historyMoviesData,
                 crimeMoviesData,
                 animationData,
             ]) => {
@@ -50,7 +50,7 @@ export const Home = ({ navigation }) => {
 
                 setMovieImages(movieImagesArray);
                 setPopularMovies(popularMoviesData);
-                setPopularTVseries(popularTvSeriesData);
+                setHistoryMoviesData(historyMoviesData);
                 setCrimeMovies(crimeMoviesData);
                 setAnime(animationData);
                 // setIsLoading(false);
@@ -87,7 +87,7 @@ export const Home = ({ navigation }) => {
                         </Carousel>
 
                         <Carousel>
-                            <List navigation={navigation} title="Popular TV Shows" content={popularTVseries} />
+                            <List navigation={navigation} title="History" content={historyMovies} />
                         </Carousel>
 
                         <Carousel>

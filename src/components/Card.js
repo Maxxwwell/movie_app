@@ -13,7 +13,7 @@ class Card extends React.PureComponent {
     render() {
         const { navigation, item } = this.props;
         return <MovieCard
-            onPress={() => navigation.navigate('Detail', {movieDetail: item})}>
+            onPress={() => navigation.navigate('Detail', {movieId: item.id})}>
 
             <CardImages
                 resizeMode="cover"
