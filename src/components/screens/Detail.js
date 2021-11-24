@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
 import { getMovieDetails } from '../../services/Services';
 import { Loading } from '../styles/Home-styles';
-import { DateText, Genre, GenreText, HorizontalSpace, Icon_Date, MovieOverview, MovieTitle, StyledContainer } from '../styles/Detail-styles';
+import { DateText, Genre, GenreText, MovieOverview, MovieTitle, PlayButtonPosition, StyledContainer } from '../styles/Detail-styles';
 import { DetailImages } from '../styles/Detail-styles';
-import { Text } from 'react-native';
 import StarRating from 'react-native-star-rating';
-
+import dateFormat from 'dateformat';
+import PlayButton from '../PlayButton';
 
 const Detail = ({ route, navigation }) => {
 
@@ -39,6 +39,9 @@ const Detail = ({ route, navigation }) => {
             } />
 
           <StyledContainer>
+            <PlayButtonPosition>
+              <PlayButton />
+            </PlayButtonPosition>
 
             <MovieTitle>{movieDetail.title}</MovieTitle>
 
@@ -49,23 +52,17 @@ const Detail = ({ route, navigation }) => {
               })}
             </Genre>)
             }
-            <Icon_Date>
 
-              <StarRating
+            <StarRating
+              maxStars={5}
+              activeOpacity={0}
+              disabled={true}
+              rating={movieDetail.vote_average / 2}
+              fullStarColor={'gold'}
+              starSize={25}
+            />
 
-
-                maxStars={5}
-                activeOpacity={0}
-                disabled={true}
-                rating={movieDetail.vote_average / 2}
-                fullStarColor={'gold'}
-                starSize={20}
-              />
-              <HorizontalSpace />
-              <DateText>{'Release date: ' + movieDetail.release_date}</DateText>
-
-
-            </Icon_Date>
+            <DateText>{'Release date: ' + dateFormat(movieDetail.release_date, 'mmmm dS, yyyy')}</DateText>
 
             <MovieOverview>{movieDetail.overview}</MovieOverview>
 
