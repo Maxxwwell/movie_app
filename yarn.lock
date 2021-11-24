@@ -5722,6 +5722,11 @@ react-native-codegen@^0.0.7:
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
 
+react-native-date-format@^1.1.30:
+  version "1.1.30"
+  resolved "https://registry.yarnpkg.com/react-native-date-format/-/react-native-date-format-1.1.30.tgz#3d6b99b584120593d0b434db639ffe28ac37870c"
+  integrity sha512-IzP4xTBYQQZBPFVUXQhhhu1FmdeDdDHT3eMMD9Na+sRfbB5RNKuXg+oAH6nk0LFQYWyq0KG7pd7IZmPEqeMpUA==
+
 react-native-gesture-handler@^1.10.3:
   version "1.10.3"
   resolved "https://registry.npmjs.org/react-native-gesture-handler/-/react-native-gesture-handler-1.10.3.tgz"

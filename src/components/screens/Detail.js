@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
 import { getMovieDetails } from '../../services/Services';
 import { Loading } from '../styles/Home-styles';
-import { Genre, GenreText, MovieTitle, StyledContainer } from '../styles/Detail-styles';
+import { DateText, Genre, GenreText, HorizontalSpace, Icon_Date, MovieOverview, MovieTitle, StyledContainer } from '../styles/Detail-styles';
 import { DetailImages } from '../styles/Detail-styles';
 import { Text } from 'react-native';
 import StarRating from 'react-native-star-rating';
+
 
 const Detail = ({ route, navigation }) => {
 
@@ -48,14 +49,25 @@ const Detail = ({ route, navigation }) => {
               })}
             </Genre>)
             }
-            <StarRating
-              maxStars={5}
-              disabled={true}
-              rating={movieDetail.vote_average/2}
-              fullStarColor={'gold'}
-              starSize={20}
-              halfStarEnabled={true}
+            <Icon_Date>
+
+              <StarRating
+
+
+                maxStars={5}
+                activeOpacity={0}
+                disabled={true}
+                rating={movieDetail.vote_average / 2}
+                fullStarColor={'gold'}
+                starSize={20}
               />
+              <HorizontalSpace />
+              <DateText>{'Release date: ' + movieDetail.release_date}</DateText>
+
+
+            </Icon_Date>
+
+            <MovieOverview>{movieDetail.overview}</MovieOverview>
 
           </StyledContainer>
 

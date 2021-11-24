@@ -75,7 +75,7 @@ export const Home = ({ navigation }) => {
                                 images={movieImages}
                                 sliderBoxHeight={screenSize.height * 0.7}
                                 parentWidth={screenSize.width}
-                                autoplay={false}
+                                autoplay={true}
                                 circleLoop={true}
                                 // eslint-disable-next-line react-native/no-inline-styles
                                 dotStyle={{ height: 0 }}
