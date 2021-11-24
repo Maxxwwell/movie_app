@@ -7,6 +7,7 @@ export const MovieTitle = styled(Text)`
   font-weight: bold;
 `;
 
+
 export const GenreText = styled(Text)`
   font-size: 16px;
   font-weight: bold;
@@ -18,8 +19,14 @@ export const Genre = styled(View)`
   flex-direction: row;
 `;
 
+export const ToggleVideo = styled(View)`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const DetailImages = styled(Image)`
-    height: 460px;
+    height: 490px;
     resize-mode: cover;
 `;
 

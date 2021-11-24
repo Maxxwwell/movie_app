@@ -6,8 +6,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 class PlayButton extends React.PureComponent {
     render() {
+        const { handlePress } = this.props;
         return (
-            <Pressable>
+            <Pressable onPress={() => { handlePress();}}>
                 <Icon name={'play-circle'} size={50} color="black" />
             </Pressable>
         );

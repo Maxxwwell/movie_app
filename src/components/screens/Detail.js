@@ -3,16 +3,18 @@ import React, { useEffect, useState } from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
 import { getMovieDetails } from '../../services/Services';
 import { Loading } from '../styles/Home-styles';
-import { DateText, Genre, GenreText, MovieOverview, MovieTitle, PlayButtonPosition, StyledContainer } from '../styles/Detail-styles';
+import { DateText, Genre, GenreText, MovieOverview, MovieTitle, PlayButtonPosition, SomeText, StyledContainer, ToggleVideo } from '../styles/Detail-styles';
 import { DetailImages } from '../styles/Detail-styles';
 import StarRating from 'react-native-star-rating';
 import dateFormat from 'dateformat';
 import PlayButton from '../PlayButton';
-
+import { Modal, Pressable, Text } from 'react-native';
 const Detail = ({ route, navigation }) => {
 
   const [movieDetail, setMovieDetail] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [modalVisible, setmodalVisible] = useState(false);
+
 
   const movieId = route.params.movieId;
   const placeholderImage = require('../../assets/images/noimage.png');
@@ -24,6 +26,10 @@ const Detail = ({ route, navigation }) => {
       setIsLoading(false);
     });
   }, [movieId]);
+
+  const showVideo = () => {
+    setmodalVisible(!modalVisible);
+  };
 
   return (
     <>
@@ -40,7 +46,7 @@ const Detail = ({ route, navigation }) => {
 
           <StyledContainer>
             <PlayButtonPosition>
-              <PlayButton />
+              <PlayButton handlePress={showVideo} />
             </PlayButtonPosition>
 
             <MovieTitle>{movieDetail.title}</MovieTitle>
@@ -70,6 +76,15 @@ const Detail = ({ route, navigation }) => {
 
         </ScrollView >
       }
+      <Modal animationType="slide" visible={modalVisible}>
+        <ToggleVideo>
+          <Pressable onPress={() => showVideo()}>
+            <Text>Maxxx</Text>
+
+          </Pressable>
+        </ToggleVideo>
+      </Modal>
+
     </>
   );
 };
