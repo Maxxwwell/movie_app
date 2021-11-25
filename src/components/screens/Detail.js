@@ -8,7 +8,9 @@ import { DetailImages } from '../styles/Detail-styles';
 import StarRating from 'react-native-star-rating';
 import dateFormat from 'dateformat';
 import PlayButton from '../PlayButton';
-import { Modal, Pressable, Text } from 'react-native';
+import { Modal, Pressable, Text, StyleSheet } from 'react-native';
+import Video from 'react-native-video';
+
 const Detail = ({ route, navigation }) => {
 
   const [movieDetail, setMovieDetail] = useState();
@@ -78,10 +80,19 @@ const Detail = ({ route, navigation }) => {
       }
       <Modal animationType="slide" visible={modalVisible}>
         <ToggleVideo>
-          <Pressable onPress={() => showVideo()}>
-            <Text>Maxxx</Text>
+          {/* <Pressable onPress={() => showVideo()}>
+            <Text>working</Text>
+          </Pressable> */}
 
-          </Pressable>
+          <Video
+            source={{
+              uri: 'https://vjs.zencdn.net/v/oceans.mp4',
+            }}
+            style={styles.backgroundVideo}
+          />
+
+
+
         </ToggleVideo>
       </Modal>
 
@@ -90,3 +101,14 @@ const Detail = ({ route, navigation }) => {
 };
 
 export default Detail;
+
+const styles = StyleSheet.create({
+  backgroundVideo: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+
+  },
+});
