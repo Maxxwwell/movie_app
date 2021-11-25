@@ -10,6 +10,7 @@ import dateFormat from 'dateformat';
 import PlayButton from '../PlayButton';
 import { Modal, Pressable, Text, StyleSheet } from 'react-native';
 import Video from 'react-native-video';
+import MediaControls from 'react-native-media-controls';
 
 const Detail = ({ route, navigation }) => {
 
@@ -88,11 +89,9 @@ const Detail = ({ route, navigation }) => {
             source={{
               uri: 'https://vjs.zencdn.net/v/oceans.mp4',
             }}
+            controls={true}
             style={styles.backgroundVideo}
           />
-
-
-
         </ToggleVideo>
       </Modal>
 
@@ -109,6 +108,8 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     right: 0,
+    backgroundColor: 'black',
+    justifyContent: 'center',
 
   },
 });
